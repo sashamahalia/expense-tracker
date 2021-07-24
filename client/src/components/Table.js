@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-function Table(props) {
+function Table() {
   const [posts, setPosts] = useState([]);
   // Fetches posts from server
   useEffect(() => {
@@ -10,33 +10,25 @@ function Table(props) {
       setPosts(response.data);
     };
     axiosPosts();
-  }, [])
-
-  useEffect(() => {
-    const newPost = async () => {
-      const expense = props;
-      const response = await axios.post('http://localhost:9000/api/expenses', expense);
-
-      props && setPosts(response.data);
-    };
-    newPost();
-  }, [props])
+  }, [posts])
 
     const handleDelete = async id => {
       // first removes post from UI, by filtering out and resetting state, then deletes from database.
       const newPosts = posts.filter((item) => item.id !== id);
  
       setPosts((prev) => {
-        return {
+        return [
           ...prev,
           newPosts
-        }});
+        ]});
 
       await axios.delete(`http://localhost:9000/api/expense/${id}`);
     }
 
 
-  const axiosPostMap = posts && posts.map((post, index) => {
+  const axiosPostMap = 
+
+  posts.map((post, index) => {
     return (
       <tbody key={index}>
         {console.log(posts[0]._id)}
@@ -50,7 +42,7 @@ function Table(props) {
           </tr>
       </tbody>
     )
-  })
+  });
 
   return (
     <table className="table">
@@ -62,7 +54,7 @@ function Table(props) {
             <th scope="col">Delete</th>
           </tr>
         </thead>
-        <>{axiosPostMap}</>
+        <>{posts ? axiosPostMap: null}</>
     </table>
 
   )
