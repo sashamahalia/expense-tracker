@@ -9,6 +9,26 @@ router.get("/expenses", async (req, res) => {
   res.send(expenses);
 })
 
+router.post("/expenses", async (req, res) => {
+	const expense = new Expense({
+		name: req.body.name,
+		cost: req.body.cost,
+    category: req.body.category
+	})
+	await expense.save();
+	res.send(post)
+})
+
+router.delete("/expense/:id", async (req, res) => {
+	try {
+		await Expense.deleteOne({ _id: req.params.id });
+		res.status(204).send();
+	} catch {
+		res.status(404);
+		res.send({ error: "Expense doesn't exist!" });
+	}
+})
+
 // const express = require('express');
 
 // const ExpenseCtrl = require('../controllers/expense-ctrl');
