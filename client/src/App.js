@@ -1,5 +1,6 @@
 import './App.css';
-import Axios from './helpers/axios';
+import Axios from './components/Axios';
+
 
 function App() {
   return (
