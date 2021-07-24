@@ -1,11 +1,13 @@
 import './App.css';
-import Axios from './components/Axios';
+import Table from './components/Table';
+import Form from './components/Form';
 
 
 function App() {
   return (
     <div className="App">
-      <Axios />
+      <Form />
+      <Table />
     </div>
   );
 }

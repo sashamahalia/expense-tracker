@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-function Axios() {
+function Table(props) {
   const [posts, setPosts] = useState([]);
-
+  // Fetches posts from server
   useEffect(() => {
     const axiosPosts = async () => {
       const response = await axios('http://localhost:9000/api/expenses');
@@ -12,7 +12,18 @@ function Axios() {
     axiosPosts();
   }, [])
 
+  useEffect(() => {
+    const newPost = async () => {
+      const expense = props;
+      const response = await axios.post('http://localhost:9000/api/expenses', expense);
+
+      props && setPosts(response.data);
+    };
+    newPost();
+  }, [props])
+
     const handleDelete = async id => {
+      // first removes post from UI, by filtering out and resetting state, then deletes from database.
       const newPosts = posts.filter((item) => item.id !== id);
  
       setPosts((prev) => {
@@ -57,4 +68,4 @@ function Axios() {
   )
 }
 
-export default Axios
+export default Table
