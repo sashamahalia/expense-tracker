@@ -12,16 +12,29 @@ function Axios() {
     axiosPosts();
   }, [])
 
+    const handleDelete = async id => {
+      const newPosts = posts.filter((item) => item.id !== id);
+ 
+      setPosts((prev) => {
+        return {
+          ...prev,
+          newPosts
+        }});
 
-  const axiosPostMap = posts.map((post, index) => {
+      await axios.delete(`http://localhost:9000/api/expense/${id}`);
+    }
+
+
+  const axiosPostMap = posts && posts.map((post, index) => {
     return (
       <tbody key={index}>
+        {console.log(posts[0]._id)}
           <tr>
             <td>{post.name}</td>
             <td>${post.cost}</td>
             <td>{post.category}</td>
             <td>
-              <button className="btn btn-primary" type="submit" form="delete" value="Submit">Delete</button>
+              <button className="btn btn-primary" type="button" onClick={() => handleDelete(post._id)}>Delete</button>
             </td>
           </tr>
       </tbody>
