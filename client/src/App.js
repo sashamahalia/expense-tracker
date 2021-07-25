@@ -8,6 +8,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="title">Expense Tracker</h1>
       <InputForm refreshKey={refreshKey} setRefreshKey={setRefreshKey}/>
       <Table className="table" refreshKey={refreshKey} setRefreshKey={setRefreshKey}/>
     </div>

@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import './Table.css';
 
 function Table(props) {
   const [posts, setPosts] = useState([]);
@@ -37,7 +38,7 @@ function Table(props) {
   });
 
   return (
-    <table className="table">
+    <table className="table" id="table">
         <thead>
           <tr>
             <th scope="col">Name</th>

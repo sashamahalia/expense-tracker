@@ -28,12 +28,12 @@ function InputForm(props) {
   return (
     <Form id="form">
       <FormGroup className="form-item">
-        <Label for="name" className="label">Name</Label>
+        <Label for="name" className="label">Item Name</Label>
         <Input
           type="text"
           name="name"
           id="name"
-          placeholder="Enter name"
+          placeholder="Enter item name"
           value={name}
           onChange={event => setName(event.target.value)}
         />
