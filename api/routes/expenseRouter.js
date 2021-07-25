@@ -16,7 +16,7 @@ router.post("/expenses", async (req, res) => {
     category: req.body.category
 	})
 	await expense.save();
-	res.send(post)
+	res.send(expense);
 })
 
 router.delete("/expense/:id", async (req, res) => {

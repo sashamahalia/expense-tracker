@@ -1,11 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 
-function Form() {
-  const [name, setName] = useState('')
-  const [cost, setCost] = useState(0)
-  const [category, setCategory] = useState('')
+function Form(props) {
+  const [name, setName] = useState('');
+  const [cost, setCost] = useState(0);
+  const [category, setCategory] = useState('');
   
+  // When submit button is clicked, collects and sends form data as post request.
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
@@ -17,6 +18,8 @@ function Form() {
       setName('');
       setCost(0);
       setCategory('');
+      
+      props.setRefreshKey(oldKey => oldKey +1);
   }
   
   return (
