@@ -1,6 +1,6 @@
 import './App.css';
 import Table from './components/Table';
-import Form from './components/Form';
+import InputForm from './components/InputForm';
 import { useState } from 'react'
 
 function App() {
@@ -8,8 +8,8 @@ function App() {
 
   return (
     <div className="App">
-      <Form refreshKey={refreshKey} setRefreshKey={setRefreshKey}/>
-      <Table refreshKey={refreshKey} setRefreshKey={setRefreshKey}/>
+      <InputForm refreshKey={refreshKey} setRefreshKey={setRefreshKey}/>
+      <Table className="table" refreshKey={refreshKey} setRefreshKey={setRefreshKey}/>
     </div>
   );
 }

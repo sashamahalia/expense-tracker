@@ -10,18 +10,9 @@ function Table(props) {
       setPosts(response.data);
     };
     axiosPosts();
-  }, [props.refreshKey])
+  }, [props.refreshKey]);
 
     const handleDelete = async id => {
-         // first removes post from UI, by filtering out and resetting state, then deletes from database.
-        //  const newPosts = posts.filter((item) => item.id !== id);
-      
- 
-        // setPosts((prev) => {
-        //   return [
-        //     ...prev,
-        //     newPosts
-        //   ]});
       await axios.delete(`http://localhost:9000/api/expense/${id}`);
       props.setRefreshKey(oldKey => oldKey +1);
     }
